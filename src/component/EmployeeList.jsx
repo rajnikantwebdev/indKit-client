@@ -48,7 +48,7 @@ const EmployeeList = () => {
       } else {
         // Update existing employee
         const response = await axios.put(
-          `http://localhost:8080/api/employee/${editingEmployee.f_Id}`,
+          `${process.env.SERVER_URL}/api/employee/${editingEmployee.f_Id}`,
           {
             f_Id: parseInt(editingEmployee.f_Id),
             f_Image: editingEmployee.f_Image,
@@ -102,7 +102,7 @@ const EmployeeList = () => {
     const fetchEmployees = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/employee/list"
+          `${process.env.SERVER_URL}/api/employee/list`
         );
         if (response?.data?.success) {
           setEmployees(response.data.data);
@@ -126,7 +126,7 @@ const EmployeeList = () => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:8080/api/employee/${id}`
+        `${process.env.SERVER_URL}/api/employee/${id}`
       );
       if (response?.data?.success) {
         setEmployees(employees.filter((emp) => emp.f_Id !== id));

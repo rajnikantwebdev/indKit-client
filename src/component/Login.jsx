@@ -32,7 +32,7 @@ const LoginPage = () => {
     if (!valid) return;
 
     try {
-      const response = await axios.post("http://localhost:8080/api/login", {
+      const response = await axios.post(`${process.env.SERVER_URL}/api/login`, {
         username,
         password,
       });

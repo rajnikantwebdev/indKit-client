@@ -32,10 +32,13 @@ const RegisterPage = () => {
     if (!valid) return;
 
     try {
-      const response = await axios.post("http://localhost:8080/api/register", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        `${process.env.SERVER_URL}/api/register`,
+        {
+          username,
+          password,
+        }
+      );
       setSuccessMessage("User registered successfully");
       setTimeout(() => {
         navigate("/login");

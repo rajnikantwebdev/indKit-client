@@ -20,7 +20,7 @@ const Navbar = () => {
 
       // Call logout API
       await axios.post(
-        "http://localhost:8080/api/logout",
+        `${process.env.SERVER_URL}/api/logout`,
         {},
         {
           headers: {
