@@ -33,7 +33,7 @@ const RegisterPage = () => {
 
     try {
       const response = await axios.post(
-        `${process.env.SERVER_URL}/api/register`,
+        `${import.meta.env.VITE_SERVER_URL}/api/register`,
         {
           username,
           password,

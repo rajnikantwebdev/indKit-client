@@ -25,7 +25,7 @@ const EmployeeList = () => {
       if (isCreating) {
         // Create new employee
         const response = await axios.post(
-          `${process.env.SERVER_URL}/api/employee`,
+          `${import.meta.env.VITE_SERVER_URL}/api/employee`,
           {
             f_Image: editingEmployee.f_Image,
             f_Name: editingEmployee.f_Name,
@@ -48,7 +48,9 @@ const EmployeeList = () => {
       } else {
         // Update existing employee
         const response = await axios.put(
-          `${process.env.SERVER_URL}/api/employee/${editingEmployee.f_Id}`,
+          `${import.meta.env.VITE_SERVER_URL}/api/employee/${
+            editingEmployee.f_Id
+          }`,
           {
             f_Id: parseInt(editingEmployee.f_Id),
             f_Image: editingEmployee.f_Image,
@@ -100,9 +102,10 @@ const EmployeeList = () => {
 
   useEffect(() => {
     const fetchEmployees = async () => {
+      console.log(import.meta.env.VITE_SERVER_URL);
       try {
         const response = await axios.get(
-          `${process.env.SERVER_URL}/api/employee/list`
+          `${import.meta.env.VITE_SERVER_URL}/api/employee/list`
         );
         if (response?.data?.success) {
           setEmployees(response.data.data);
@@ -126,7 +129,7 @@ const EmployeeList = () => {
 
     try {
       const response = await axios.delete(
-        `${process.env.SERVER_URL}/api/employee/${id}`
+        `${import.meta.env.VITE_SERVER_URL}/api/employee/${id}`
       );
       if (response?.data?.success) {
         setEmployees(employees.filter((emp) => emp.f_Id !== id));

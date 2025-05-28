@@ -32,10 +32,13 @@ const LoginPage = () => {
     if (!valid) return;
 
     try {
-      const response = await axios.post(`${process.env.SERVER_URL}/api/login`, {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_SERVER_URL}/api/login`,
+        {
+          username,
+          password,
+        }
+      );
       setSuccessMessage("User logged in successfully");
       localStorage.setItem("username", response.data.username);
       localStorage.setItem("token", response.data.token);

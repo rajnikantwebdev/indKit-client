@@ -1,12 +1,12 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import { Users, LogOut, Menu, X } from "lucide-react";
 import { Link, useNavigate } from "react-router";
-import axios from "axios"
+import axios from "axios";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const username = localStorage.getItem("username")
+  const username = localStorage.getItem("username");
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -20,7 +20,7 @@ const Navbar = () => {
 
       // Call logout API
       await axios.post(
-        `${process.env.SERVER_URL}/api/logout`,
+        `${import.meta.env.VITE_SERVER_URL}/api/logout`,
         {},
         {
           headers: {
@@ -44,15 +44,16 @@ const Navbar = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-
-
   return (
     <nav className="primary-bg shadow-lg border-b w-full fixed top-0 left-0">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to={"/dashboard"} className="text-2xl font-bold text-blue-600 cursor-pointer hover:text-blue-700 transition-colors">
+            <Link
+              to={"/dashboard"}
+              className="text-2xl font-bold text-blue-600 cursor-pointer hover:text-blue-700 transition-colors"
+            >
               IndKit
             </Link>
           </div>
